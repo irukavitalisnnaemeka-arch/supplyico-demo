@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Supplyico — Use of Funds & Projections</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;background:#fff;color:#171717;max-width:800px;margin:0 auto;padding:48px 40px}
+@media print{body{padding:32px 24px;max-width:none}}
+.green{color:#10b981}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;padding-bottom:20px;border-bottom:2px solid #0a0a0a}
+.hdr h1{font-size:20px;font-weight:900;letter-spacing:-.3px}
+.hdr p{font-size:11px;color:#737373;text-align:right;line-height:1.5}
+h2{font-size:14px;font-weight:700;color:#10b981;text-transform:uppercase;letter-spacing:1px;margin:32px 0 14px}
+h2:first-of-type{margin-top:0}
+p.note{font-size:12px;color:#737373;line-height:1.6;margin-bottom:16px}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:8px}
+th{text-align:left;font-weight:600;color:#737373;font-size:11px;text-transform:uppercase;letter-spacing:.5px;padding:8px 12px;border-bottom:2px solid #e5e5e5}
+td{padding:8px 12px;border-bottom:1px solid #f0f0f0;color:#404040}
+tr:last-child td{border-bottom:none}
+.r{text-align:right}
+.bold{font-weight:700;color:#171717}
+.total td{border-top:2px solid #0a0a0a;font-weight:800;color:#0a0a0a;font-size:14px}
+.hl{background:#ecfdf5}
+
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.bar-label{width:140px;font-size:12px;font-weight:600;color:#404040;flex-shrink:0}
+.bar-track{flex:1;height:24px;background:#f5f5f5;border-radius:6px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:10px;font-weight:700;color:#fff}
+.bar-amt{font-size:12px;font-weight:600;color:#737373;width:60px;text-align:right;flex-shrink:0}
+
+.footer{margin-top:40px;padding-top:16px;border-top:1px solid #f0f0f0;font-size:11px;color:#a3a3a3}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+<div>
+<h1>supplyico</h1>
+<div style="font-size:11px;color:#10b981;font-weight:600;margin-top:2px">Use of Funds & Financial Projections</div>
+</div>
+<p>Pre-seed 2026<br>Confidential</p>
+</div>
+
+<h2>Funding Structure</h2>
+<p class="note">Target: &euro;350k total pre-seed package. Non-dilutive grants stacked first to maximise equity preservation.</p>
+
+<table>
+<tr><th>Source</th><th>Type</th><th class="r">Amount</th><th>Status</th></tr>
+<tr><td class="bold">UCC IGNITE</td><td>Grant</td><td class="r">&euro;25,000</td><td>Applied</td></tr>
+<tr><td class="bold">InterTradeIreland</td><td>Grant</td><td class="r">&euro;15,000</td><td>Applied</td></tr>
+<tr><td class="bold">Enterprise Ireland (CSF)</td><td>Grant</td><td class="r">&euro;25,000</td><td>Planned</td></tr>
+<tr><td class="bold">Cloud credits</td><td>Credits (in-kind)</td><td class="r">&euro;35,000</td><td>Applied (10 providers)</td></tr>
+<tr class="hl"><td class="bold">Non-dilutive subtotal</td><td></td><td class="r bold">&euro;100,000</td><td></td></tr>
+<tr><td class="bold">NDRC (SAFE)</td><td>Pre-seed investment</td><td class="r">&euro;100,000</td><td>Applied</td></tr>
+<tr><td class="bold">Angels / HBAN</td><td>SAFE note</td><td class="r">&euro;150,000</td><td>In progress</td></tr>
+<tr class="total"><td>Total</td><td></td><td class="r">&euro;350,000</td><td></td></tr>
+</table>
+
+<h2>Use of Funds — 18 Months</h2>
+<p class="note">Runway target: 18 months to product-market fit with 10 paying customers.</p>
+
+<div style="margin-bottom:24px">
+<div class="bar-row"><div class="bar-label">People</div><div class="bar-track"><div class="bar-fill" style="width:54%;background:#10b981">54%</div></div><div class="bar-amt">&euro;190k</div></div>
+<div class="bar-row"><div class="bar-label">Infrastructure</div><div class="bar-track"><div class="bar-fill" style="width:14%;background:#059669">14%</div></div><div class="bar-amt">&euro;50k</div></div>
+<div class="bar-row"><div class="bar-label">Operations</div><div class="bar-track"><div class="bar-fill" style="width:17%;background:#0d9488">17%</div></div><div class="bar-amt">&euro;60k</div></div>
+<div class="bar-row"><div class="bar-label">Buffer</div><div class="bar-track"><div class="bar-fill" style="width:14%;background:#a3a3a3">14%</div></div><div class="bar-amt">&euro;50k</div></div>
+</div>
+
+<table>
+<tr><th>Category</th><th>Item</th><th class="r">Monthly</th><th class="r">18 Months</th></tr>
+<tr><td rowspan="2" class="bold">People</td><td>Founder salary</td><td class="r">&euro;3,500</td><td class="r">&euro;63,000</td></tr>
+<tr><td>AI/ML engineer (contract, from M4)</td><td class="r">&euro;5,500</td><td class="r">&euro;77,000</td></tr>
+<tr><td class="bold"></td><td>Ops / sourcing lead (part-time, from M6)</td><td class="r">&euro;2,500</td><td class="r">&euro;30,000</td></tr>
+<tr><td class="bold"></td><td>Freelance (design, legal)</td><td class="r">&euro;1,100</td><td class="r">&euro;20,000</td></tr>
+<tr><td rowspan="2" class="bold">Infra</td><td>Cloud / hosting / AI APIs</td><td class="r">&euro;1,500</td><td class="r">&euro;27,000</td></tr>
+<tr><td>SaaS tools (analytics, CRM, comms)</td><td class="r">&euro;500</td><td class="r">&euro;9,000</td></tr>
+<tr><td class="bold"></td><td>Domain, SSL, email, storage</td><td class="r">&euro;100</td><td class="r">&euro;1,800</td></tr>
+<tr><td rowspan="2" class="bold">Ops</td><td>Travel (conferences, supplier visits)</td><td class="r">&euro;800</td><td class="r">&euro;14,400</td></tr>
+<tr><td>Legal (company formation, IP, SAFE)</td><td class="r">-</td><td class="r">&euro;8,000</td></tr>
+<tr><td class="bold"></td><td>Insurance, accounting</td><td class="r">&euro;300</td><td class="r">&euro;5,400</td></tr>
+<tr><td class="bold"></td><td>Marketing (content, events, pilot incentives)</td><td class="r">&euro;500</td><td class="r">&euro;9,000</td></tr>
+<tr><td class="bold">Buffer</td><td>Contingency (14%)</td><td class="r">-</td><td class="r">&euro;50,000</td></tr>
+<tr class="total"><td></td><td>Total</td><td class="r"></td><td class="r">&euro;314,600</td></tr>
+</table>
+<p class="note">&euro;35k+ in cloud credits offsets infrastructure costs, effectively extending runway to ~20 months.</p>
+
+<h2>18-Month Milestones</h2>
+<table>
+<tr><th>Quarter</th><th>Milestone</th><th>Target</th></tr>
+<tr><td class="bold">Q1 (M1-3)</td><td>Free audits, first pilots, pricing database seeded</td><td>5 free audits completed</td></tr>
+<tr><td class="bold">Q2 (M4-6)</td><td>First paying customer, AI engineer onboard</td><td>2 paying customers, 100 quotes benchmarked</td></tr>
+<tr><td class="bold">Q3 (M7-9)</td><td>Product-market fit signals, repeat customers</td><td>5 paying customers, &euro;15k MRR</td></tr>
+<tr><td class="bold">Q4 (M10-12)</td><td>Scale playbook, prepare seed round</td><td>10 customers, &euro;30k MRR, 500+ benchmarks</td></tr>
+<tr><td class="bold">Q5-6 (M13-18)</td><td>Seed raise, UK expansion</td><td>&euro;50k MRR, seed round closed</td></tr>
+</table>
+
+<h2>Revenue Projections (Conservative)</h2>
+<p class="note">Based on managed sourcing at 25% of savings. Average client manages &euro;200k annual spend, Supplyico identifies ~12% savings = &euro;24k. Revenue per client: &euro;6k/year.</p>
+
+<table>
+<tr><th>Month</th><th class="r">Customers</th><th class="r">MRR</th><th class="r">Annual Run Rate</th></tr>
+<tr><td>M6</td><td class="r">2</td><td class="r">&euro;1,000</td><td class="r">&euro;12,000</td></tr>
+<tr><td>M9</td><td class="r">5</td><td class="r">&euro;2,500</td><td class="r">&euro;30,000</td></tr>
+<tr><td>M12</td><td class="r">10</td><td class="r">&euro;5,000</td><td class="r">&euro;60,000</td></tr>
+<tr class="hl"><td class="bold">M18</td><td class="r bold">25</td><td class="r bold">&euro;12,500</td><td class="r bold">&euro;150,000</td></tr>
+</table>
+<p class="note">These figures exclude one-off Quote Check revenue (&euro;49/quote) which provides additional upside.</p>
+
+<div class="footer">&copy; 2026 Supplyico &middot; Confidential &middot; iruka@supplyico.com</div>
+
+</body>
+</html>
