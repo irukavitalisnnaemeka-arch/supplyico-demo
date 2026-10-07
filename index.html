@@ -3,74 +3,392 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Supplyico — Investor Materials</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Supplyico — The AI sourcing agent for brands that buy from overseas</title>
+<meta name="description" content="Supplyico finds verified factories, benchmarks every quote, negotiates in the supplier's language and manages QC. You just approve.">
+<meta name="theme-color" content="#050505">
+<meta property="og:title" content="Supplyico — AI sourcing for brands that buy from overseas">
+<meta property="og:description" content="Benchmark every quote. Negotiate in the supplier's language. Pay only when you save.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+:root{
+  --bg:#050505; --bg-2:#0b0b0c; --surface:rgba(255,255,255,.04); --surface-2:rgba(255,255,255,.07);
+  --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
+  --text:#f5f5f7; --muted:#a1a1a6; --faint:#6e6e73;
+  --accent:#10b981; --accent-2:#34d399; --accent-ink:#04120c;
+  --radius:20px; --maxw:1120px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;background:#0a0a0a;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px}
-.logo{font-size:28px;font-weight:900;letter-spacing:-.5px;margin-bottom:6px}
-.logo span{color:#10b981}
-.tag{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:48px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:800px;width:100%}
-a.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:24px;text-decoration:none;color:#fff;transition:all .2s}
-a.card:hover{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.3);transform:translateY(-2px)}
-.card h3{font-size:15px;font-weight:700;margin-bottom:4px}
-.card p{font-size:12px;color:rgba(255,255,255,.4);line-height:1.5}
-.card .badge{display:inline-block;font-size:10px;font-weight:600;color:#10b981;background:rgba(16,185,129,.12);padding:2px 8px;border-radius:100px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
-.footer{margin-top:48px;font-size:11px;color:rgba(255,255,255,.2);text-align:center}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;border-radius:8px}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;height:56px;display:flex;align-items:center;
+  background:rgba(5,5,5,.62);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo{font-weight:800;font-size:19px;letter-spacing:-.03em}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:28px;font-size:13px;color:var(--muted)}
+.nav-links a{transition:color .2s}.nav-links a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 14px/1 'Inter',sans-serif;
+  padding:12px 20px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .25s var(--ease),background .25s,border-color .25s,box-shadow .25s}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{background:var(--accent-2);transform:translateY(-1px);box-shadow:0 8px 30px -8px rgba(16,185,129,.55)}
+.btn-ghost{border-color:var(--line-2);color:var(--text);background:transparent}
+.btn-ghost:hover{background:var(--surface-2);transform:translateY(-1px)}
+.btn-sm{padding:8px 14px;font-size:13px}
+.arrow{transition:transform .25s var(--ease)}.btn:hover .arrow{transform:translateX(3px)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;padding:168px 0 96px;text-align:center;overflow:hidden}
+.hero::before{content:"";position:absolute;left:50%;top:-220px;width:1100px;height:720px;transform:translateX(-50%);
+  background:radial-gradient(closest-side,rgba(16,185,129,.22),rgba(16,185,129,.06) 55%,transparent 75%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.35;-webkit-mask-image:radial-gradient(ellipse 60% 55% at 50% 0%,#000,transparent 75%);mask-image:radial-gradient(ellipse 60% 55% at 50% 0%,#000,transparent 75%)}
+.hero .wrap{position:relative;z-index:1}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;color:var(--muted);
+  padding:6px 14px;border:1px solid var(--line-2);border-radius:999px;background:var(--surface)}
+.pill i{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+h1{font-size:clamp(40px,7.4vw,84px);line-height:1.02;letter-spacing:-.045em;font-weight:700;margin:28px auto 0;max-width:16ch}
+.grad{background:linear-gradient(180deg,#fff 20%,#8d8d93);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-accent{background:linear-gradient(120deg,var(--accent-2),var(--accent) 60%,#0ea5a4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:clamp(17px,2vw,21px);color:var(--muted);max-width:620px;margin:24px auto 0;line-height:1.5;letter-spacing:-.01em}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.sub{margin-top:18px;font-size:12px;color:var(--faint)}
+
+/* ---------- Product mock ---------- */
+.stage{position:relative;max-width:920px;margin:72px auto 0;perspective:1600px}
+.stage::before{content:"";position:absolute;inset:8% 6% -10%;background:radial-gradient(closest-side,rgba(16,185,129,.28),transparent 70%);filter:blur(40px);z-index:0}
+.window{position:relative;z-index:1;border:1px solid var(--line-2);border-radius:18px;overflow:hidden;
+  background:linear-gradient(180deg,#121214,#0a0a0b);box-shadow:0 40px 120px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.03) inset;
+  transform:rotateX(6deg);transform-origin:50% 100%;transition:transform .8s var(--ease);text-align:left}
+.stage:hover .window{transform:rotateX(0)}
+.bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.dot{width:10px;height:10px;border-radius:50%;background:#2a2a2d}
+.bar .t{margin-left:12px;font-size:12px;color:var(--faint)}
+.tag-ill{margin-left:auto;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);border:1px solid var(--line);padding:3px 8px;border-radius:999px}
+.mock{display:grid;grid-template-columns:1.35fr 1fr}
+.pane{padding:22px}
+.pane + .pane{border-left:1px solid var(--line)}
+.eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.pane h4{font-size:15px;font-weight:600;margin:6px 0 16px;letter-spacing:-.01em}
+.row{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:12px 0;border-top:1px solid var(--line);font-size:13px}
+.row:first-of-type{border-top:0}
+.sup{display:flex;align-items:center;gap:10px;color:var(--text)}
+.av{width:28px;height:28px;border-radius:8px;background:var(--surface-2);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--muted)}
+.price{color:var(--muted)}
+.chip{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+.chip.good{color:var(--accent-2);background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3)}
+.chip.mid{color:#fbbf24;background:rgba(251,191,36,.08);border-color:rgba(251,191,36,.25)}
+.chip.high{color:#f87171;background:rgba(248,113,113,.08);border-color:rgba(248,113,113,.25)}
+.meter{height:8px;border-radius:99px;background:var(--surface-2);position:relative;margin:14px 0 8px}
+.meter b{position:absolute;inset:0 auto 0 0;width:62%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.meter u{position:absolute;top:-4px;left:62%;width:2px;height:16px;background:#fff;border-radius:2px}
+.legend{display:flex;justify-content:space-between;font-size:11px;color:var(--faint)}
+.msg{margin-top:18px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font-size:12px;color:var(--muted);line-height:1.55}
+.msg strong{color:var(--text);font-weight:600}
+.approve{margin-top:14px;display:flex;gap:8px}
+.approve span{flex:1;text-align:center;padding:9px;border-radius:10px;font-size:12px;font-weight:600}
+.approve .a{background:var(--accent);color:var(--accent-ink)}
+.approve .b{border:1px solid var(--line-2);color:var(--muted)}
+
+/* ---------- Sections ---------- */
+.sec{padding:120px 0}
+.sec-head{text-align:center;max-width:760px;margin:0 auto 64px}
+.sec-head .eyebrow{color:var(--accent-2)}
+h2{font-size:clamp(32px,5vw,56px);line-height:1.05;letter-spacing:-.04em;font-weight:700;margin-top:14px}
+.sec-head p{margin-top:18px;font-size:19px;color:var(--muted);letter-spacing:-.01em}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line-2),transparent)}
+
+.problem{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+  transition:background .3s,border-color .3s,transform .4s var(--ease)}
+.card:hover{background:var(--surface-2);border-color:var(--line-2);transform:translateY(-3px)}
+.card h3{font-size:19px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+.card p{font-size:15px;color:var(--muted)}
+.card .k{font-size:13px;font-weight:600;color:var(--accent-2);margin-bottom:14px;display:block;letter-spacing:.02em}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.step{position:relative;padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--surface),transparent)}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;
+  background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:var(--accent-2);font-size:13px;font-weight:700;margin-bottom:20px}
+.step h3{font-size:18px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+.step p{font-size:14px;color:var(--muted)}
+
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.b1{grid-column:span 4}.b2{grid-column:span 2}.b3{grid-column:span 2}.b4{grid-column:span 4}
+.tile{position:relative;overflow:hidden;min-height:260px;padding:32px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));transition:border-color .3s,transform .4s var(--ease)}
+.tile:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.tile::after{content:"";position:absolute;right:-80px;top:-80px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(16,185,129,.16),transparent);opacity:0;transition:opacity .5s}
+.tile:hover::after{opacity:1}
+.tile .eyebrow{color:var(--accent-2)}
+.tile h3{font-size:clamp(22px,2.6vw,30px);line-height:1.12;letter-spacing:-.03em;font-weight:700;margin:12px 0;max-width:20ch}
+.tile p{color:var(--muted);font-size:15px;max-width:44ch}
+.langs,.fmt{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.langs span{font-size:12px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;color:var(--muted);background:var(--surface)}
+.fmt span{font-size:12px;font-weight:600;padding:6px 12px;border-radius:8px;background:var(--surface-2);color:var(--text)}
+
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+.plan{display:flex;flex-direction:column;padding:32px;border:1px solid var(--line);border-radius:24px;background:var(--surface)}
+.plan.feat{background:linear-gradient(180deg,rgba(16,185,129,.12),rgba(16,185,129,.02));border-color:rgba(16,185,129,.4);position:relative}
+.plan.feat::before{content:"Core offering";position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:var(--accent-ink);background:var(--accent);padding:4px 12px;border-radius:999px;white-space:nowrap}
+.plan h3{font-size:16px;font-weight:600;color:var(--muted)}
+.amt{font-size:46px;font-weight:700;letter-spacing:-.04em;margin:14px 0 4px;line-height:1}
+.amt small{font-size:15px;font-weight:500;color:var(--faint);letter-spacing:0}
+.plan .desc{font-size:14px;color:var(--muted);margin:10px 0 22px;min-height:42px}
+.plan ul{list-style:none;display:grid;gap:10px;margin-bottom:28px;font-size:14px;color:var(--text)}
+.plan li{display:flex;gap:10px}
+.plan li::before{content:"";flex:none;width:16px;height:16px;margin-top:2px;border-radius:50%;
+  background:rgba(16,185,129,.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.3 2.3 4.7-4.9' fill='none' stroke='%2334d399' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.plan .btn{margin-top:auto}
+
+.mat{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mat a{display:flex;flex-direction:column;gap:6px;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--surface);transition:background .3s,border-color .3s,transform .4s var(--ease)}
+.mat a:hover{background:var(--surface-2);border-color:rgba(16,185,129,.35);transform:translateY(-3px)}
+.mat .eyebrow{color:var(--accent-2)}
+.mat h3{font-size:16px;font-weight:600;letter-spacing:-.01em;display:flex;justify-content:space-between;align-items:center}
+.mat h3 .arrow{color:var(--faint)}
+.mat p{font-size:13px;color:var(--muted)}
+
+.final{text-align:center;padding:130px 0;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;left:50%;bottom:-300px;width:1000px;height:600px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(16,185,129,.2),transparent 70%)}
+.final .wrap{position:relative}
+.final h2{max-width:14ch;margin:0 auto}
+.final p{color:var(--muted);font-size:19px;margin:20px auto 0;max-width:520px}
+
+footer{border-top:1px solid var(--line);padding:40px 0 56px;font-size:13px;color:var(--faint)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer nav{display:flex;gap:22px;flex-wrap:wrap}
+footer a:hover{color:var(--text)}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+@media (max-width:960px){
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .mat{grid-template-columns:repeat(2,1fr)}
+  .bento{grid-template-columns:1fr 1fr}.b1,.b4{grid-column:span 2}.b2,.b3{grid-column:span 1}
+}
+@media (max-width:720px){
+  .nav-links{display:none}
+  .hero{padding:128px 0 72px}
+  .sec{padding:80px 0}
+  .problem,.pricing{grid-template-columns:1fr}
+  .mock{grid-template-columns:1fr}.pane + .pane{border-left:0;border-top:1px solid var(--line)}
+  .window{transform:none}
+  .row{grid-template-columns:1fr auto}.row .price{display:none}
+  .bento{grid-template-columns:1fr}.b1,.b2,.b3,.b4{grid-column:span 1}
+  .steps,.mat{grid-template-columns:1fr}
+  .tile{min-height:0;padding:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}.rv{opacity:1;transform:none}.window{transform:none}
+}
 </style>
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 
-<div class="logo">supply<span>ico</span></div>
-<div class="tag">AI-Powered Sourcing Agent for Product Businesses</div>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Supplyico home">supply<span>ico</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#why">Why Supplyico</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#materials">Investors</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="demo.html">Try the demo</a>
+  </div>
+</header>
 
-<div class="grid">
-<a class="card" href="demo.html">
-<div class="badge">Interactive</div>
-<h3>Product Demo</h3>
-<p>Client Portal, Mobile App & Control Room — live interactive demo</p>
-</a>
-<a class="card" href="deck.html">
-<div class="badge">12 Slides</div>
-<h3>Pitch Deck</h3>
-<p>Problem, solution, market, business model, traction, the ask</p>
-</a>
-<a class="card" href="one-pager.html">
-<div class="badge">1 Page</div>
-<h3>Executive Summary</h3>
-<p>Everything you need to know in one printable page</p>
-</a>
-<a class="card" href="financials.html">
-<div class="badge">Numbers</div>
-<h3>Financials</h3>
-<p>Funding structure, use of funds, 18-month milestones</p>
-</a>
-<a class="card" href="proposal.html">
-<div class="badge">Template</div>
-<h3>Free Audit Proposal</h3>
-<p>Customer-facing proposal for the free sourcing audit</p>
-</a>
-<a class="card" href="safe.html">
-<div class="badge">Legal</div>
-<h3>SAFE Agreement</h3>
-<p>YC-based SAFE adapted for Irish law</p>
-</a>
-<a class="card" href="terms.html">
-<div class="badge">Legal</div>
-<h3>Terms of Service</h3>
-<p>Service terms, fees, IP, GDPR, liability</p>
-</a>
-<a class="card" href="privacy.html">
-<div class="badge">Legal</div>
-<h3>Privacy Policy</h3>
-<p>GDPR-compliant data handling and AI provider disclosure</p>
-</a>
-</div>
+<main id="top">
 
-<div class="footer">
-&copy; 2026 Supplyico &middot; Cork, Ireland &middot; iruka@supplyico.com
-</div>
+<section class="hero">
+  <div class="wrap">
+    <span class="pill rv"><i></i>Pre-seed 2026 · Cork, Ireland</span>
+    <h1 class="rv d1"><span class="grad">Sourcing, </span><span class="grad-accent">on autopilot.</span></h1>
+    <p class="lede rv d2">Supplyico is the AI sourcing agent for brands that buy from overseas. It finds verified factories, benchmarks every quote, negotiates in the supplier's language and manages QC. You just approve.</p>
+    <div class="cta rv d3">
+      <a class="btn btn-primary" href="demo.html">Explore the live demo <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" href="deck.html">Read the pitch deck</a>
+    </div>
+    <p class="sub rv d3">Free sourcing audit · No integration · Pay only when you save</p>
 
+    <div class="stage rv d3" aria-label="Illustrative product preview">
+      <div class="window">
+        <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="t">Quote comparison</span><span class="tag-ill">Illustrative</span></div>
+        <div class="mock">
+          <div class="pane">
+            <div class="eyebrow">Incoming quotes</div>
+            <h4>Silicone pet bowl · 5,000 units</h4>
+            <div class="row"><span class="sup"><span class="av">A</span>Supplier A</span><span class="price">Read from PDF</span><span class="chip good">Fair</span></div>
+            <div class="row"><span class="sup"><span class="av">B</span>Supplier B</span><span class="price">Read from email</span><span class="chip mid">Above benchmark</span></div>
+            <div class="row"><span class="sup"><span class="av">C</span>Supplier C</span><span class="price">Read from WeChat photo</span><span class="chip high">Overpriced</span></div>
+          </div>
+          <div class="pane">
+            <div class="eyebrow">Benchmark</div>
+            <h4>Where the quote sits</h4>
+            <div class="meter"><b></b><u></u></div>
+            <div class="legend"><span>Low</span><span>Market range</span><span>High</span></div>
+            <div class="msg"><strong>Counteroffer drafted</strong><br>In the supplier's language, ready for your review. Nothing sends without approval.</div>
+            <div class="approve"><span class="a">Approve</span><span class="b">Edit</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="sec" id="why">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">The problem</div>
+      <h2><span class="grad">Sourcing is broken for small brands.</span></h2>
+      <p>Enterprise teams have procurement software. Everyone else has email, spreadsheets and hope.</p>
+    </div>
+    <div class="problem">
+      <div class="card rv"><span class="k">Slow</span><h3>Weeks of back-and-forth</h3><p>Emails with factories across time zones, for every single order.</p></div>
+      <div class="card rv d1"><span class="k">Blind</span><h3>No idea if a quote is fair</h3><p>Without pricing benchmarks, you can't tell a good offer from an overpriced one.</p></div>
+      <div class="card rv d2"><span class="k">Risky</span><h3>QC only after it arrives</h3><p>Language gaps cause spec errors, and returns eat the margin.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">How it works</div>
+      <h2><span class="grad">Brief to delivery.</span> <span class="grad-accent">Four steps.</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><h3>Submit a brief</h3><p>Describe what you need in plain language. Add photos, sketches or a competitor link.</p></div>
+      <div class="step rv d1"><h3>AI sources quotes</h3><p>We find verified factories and benchmark every quote against our pricing data.</p></div>
+      <div class="step rv d2"><h3>Negotiate and approve</h3><p>Counteroffers are drafted in the supplier's language. You review in English.</p></div>
+      <div class="step rv d3"><h3>QC and deliver</h3><p>Pre-shipment inspections with photo reports. Pay the factory after QC passes.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">The platform</div>
+      <h2><span class="grad">Built to get smarter</span> with every quote.</h2>
+      <p>Every quote processed sharpens the benchmarks. That data is the moat.</p>
+    </div>
+    <div class="bento">
+      <article class="tile b1 rv"><span class="eyebrow">Proprietary pricing data</span><h3>Know what a fair price looks like.</h3><p>Benchmarks built from real supplier quotes, not scraped marketplace listings. Accuracy compounds with volume.</p></article>
+      <article class="tile b2 rv d1"><span class="eyebrow">Document AI</span><h3>Reads any quote.</h3><p>Extracts structured pricing from whatever the factory sends.</p><div class="fmt"><span>PDF</span><span>Photo</span><span>Email</span><span>WeChat</span></div></article>
+      <article class="tile b3 rv"><span class="eyebrow">Compliance</span><h3>Duties and rules, handled.</h3><p>HS code classification, duty calculation, and flags for EU packaging rules and restricted materials.</p></article>
+      <article class="tile b4 rv d1"><span class="eyebrow">Multilingual negotiation</span><h3>Negotiate like a local.</h3><p>Counteroffers that are culturally appropriate, not just translated.</p><div class="langs"><span>Mandarin</span><span>Vietnamese</span><span>Turkish</span><span>English</span></div></article>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="sec" id="pricing">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Pricing</div>
+      <h2><span class="grad">You only pay</span> <span class="grad-accent">when you save.</span></h2>
+    </div>
+    <div class="pricing">
+      <div class="plan rv">
+        <h3>Free Audit</h3>
+        <div class="amt">€0</div>
+        <p class="desc">See what you're overpaying before you commit.</p>
+        <ul><li>Benchmark 5 products</li><li>Full landed-cost breakdown</li><li>No obligation</li></ul>
+        <a class="btn btn-ghost" href="proposal.html">See the audit</a>
+      </div>
+      <div class="plan feat rv d1">
+        <h3>Managed Sourcing</h3>
+        <div class="amt">25% <small>of savings</small></div>
+        <p class="desc">End-to-end. You keep 75% of every euro saved.</p>
+        <ul><li>Sourcing and negotiation</li><li>Pre-shipment QC</li><li>Delivery management</li></ul>
+        <a class="btn btn-primary" href="demo.html">Try the demo <span class="arrow">→</span></a>
+      </div>
+      <div class="plan rv d2">
+        <h3>Quote Check</h3>
+        <div class="amt">€49 <small>per quote</small></div>
+        <p class="desc">Upload any quote. Get a verdict and a counteroffer.</p>
+        <ul><li>AI benchmark</li><li>Counteroffer drafted</li><li>First 3 free</li></ul>
+        <a class="btn btn-ghost" href="demo.html">Check a quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="sec" id="materials">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">For investors</div>
+      <h2><span class="grad">Everything in one place.</span></h2>
+      <p>Raising a €350k pre-seed: €100k in grants and credits, €250k on a SAFE.</p>
+    </div>
+    <div class="mat">
+      <a class="rv" href="deck.html"><span class="eyebrow">12 slides</span><h3>Pitch Deck <span class="arrow">→</span></h3><p>Problem, solution, market, model, traction, the ask.</p></a>
+      <a class="rv d1" href="one-pager.html"><span class="eyebrow">1 page</span><h3>Executive Summary <span class="arrow">→</span></h3><p>Everything you need to know on one printable page.</p></a>
+      <a class="rv d2" href="financials.html"><span class="eyebrow">Numbers</span><h3>Financials <span class="arrow">→</span></h3><p>Funding structure, use of funds, 18-month milestones.</p></a>
+      <a class="rv d3" href="safe.html"><span class="eyebrow">Legal</span><h3>SAFE Agreement <span class="arrow">→</span></h3><p>YC-based SAFE adapted for Irish law.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 class="rv"><span class="grad">Stop overpaying overseas.</span></h2>
+    <p class="rv d1">See the product, or talk to the founder.</p>
+    <div class="cta rv d2">
+      <a class="btn btn-primary" href="demo.html">Explore the demo <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" href="mailto:iruka@supplyico.com">iruka@supplyico.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Supplyico · Cork, Ireland</div>
+    <nav aria-label="Legal">
+      <a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="safe.html">SAFE</a><a href="mailto:iruka@supplyico.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>8)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
 </body>
 </html>
