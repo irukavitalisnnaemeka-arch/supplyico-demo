@@ -2,52 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Supplyico — One Pager</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;background:#fff;color:#171717;max-width:800px;margin:0 auto;padding:48px 40px}
-@media print{body{padding:32px 24px;max-width:none}}
-.green{color:#10b981}
-.hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;padding-bottom:20px;border-bottom:2px solid #0a0a0a}
-.hdr h1{font-size:24px;font-weight:900;letter-spacing:-.5px}
-.hdr p{font-size:11px;color:#737373;text-align:right;line-height:1.5}
-.tagline{font-size:16px;color:#404040;line-height:1.5;margin-bottom:32px;max-width:600px}
-.tagline strong{color:#0a0a0a}
-
-.section{margin-bottom:28px}
-.section h2{font-size:13px;font-weight:700;color:#10b981;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
-.section p{font-size:13px;color:#525252;line-height:1.65}
-
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
-.metric{background:#fafafa;border:1px solid #f0f0f0;border-radius:10px;padding:16px;text-align:center}
-.metric .v{font-size:24px;font-weight:900;letter-spacing:-.5px}
-.metric .l{font-size:10px;color:#737373;margin-top:2px;text-transform:uppercase;letter-spacing:.3px}
-
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.bullet{font-size:13px;color:#525252;line-height:1.6;padding-left:16px;position:relative;margin-bottom:6px}
-.bullet::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#10b981}
-
-.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-.price-card{border:1px solid #e5e5e5;border-radius:10px;padding:16px}
-.price-card.hi{border-color:#10b981}
-.price-card h3{font-size:12px;font-weight:700;margin-bottom:4px}
-.price-card .amt{font-size:22px;font-weight:900;letter-spacing:-.3px}
-.price-card .amt span{font-size:11px;font-weight:500;color:#a3a3a3}
-.price-card p{font-size:11px;color:#737373;margin-top:4px;line-height:1.4}
-
-.ask-bar{background:#0a0a0a;color:#fff;border-radius:12px;padding:24px 28px;margin-top:28px;display:flex;justify-content:space-between;align-items:center}
-.ask-bar h3{font-size:18px;font-weight:800;letter-spacing:-.3px}
-.ask-bar .nums{display:flex;gap:28px}
-.ask-bar .n{text-align:center}
-.ask-bar .n .v{font-size:18px;font-weight:800}
-.ask-bar .n .l{font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
-
-.footer{margin-top:32px;padding-top:16px;border-top:1px solid #f0f0f0;display:flex;justify-content:space-between;font-size:11px;color:#a3a3a3}
-</style>
+<meta name="theme-color" content="#050505">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Supplyico home">supply<span>ico</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#why">Why Supplyico</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#materials" aria-current="page">Investors</a>
+    </nav>
+    <a class="btn btn-primary" href="demo.html">Try the demo</a>
+  </div>
+</header>
+<main class="doc">
 <div class="hdr">
 <div>
 <h1>supplyico</h1>
@@ -128,6 +104,14 @@ body{font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antiali
 <span>&copy; 2026 Supplyico &middot; Cork, Ireland</span>
 <span>iruka@supplyico.com</span>
 </div>
-
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>© 2026 Supplyico · Cork, Ireland</div>
+    <nav aria-label="Legal">
+      <a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="safe.html">SAFE</a><a href="mailto:iruka@supplyico.com">Contact</a>
+    </nav>
+  </div>
+</footer>
 </body>
 </html>
